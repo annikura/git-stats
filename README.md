@@ -11,7 +11,7 @@ In order to execute successfully, it requires git and gnuplot to be installed:
 	usage: git-stats.sh  [--help] | REPOSITORY [GRAPH_DESTINATION]
 		--help to see this message.
 		REPOSITORY is a name of the git repository that will be analysed.
-		GRAPH_DESTINATION if specified is a path where stats graph will be saved to. Otherwise file "graph.pdf" will be created in the current directory.
+		GRAPH_DESTINATION if specified is a name of the file that will be created in a current directory where stats graph will be saved to. If not specified, equals to "graph.pdf".
 
 ## Example
 	./git-stats.sh https://github.com/annikura/git-stats.git my-graph

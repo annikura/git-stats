@@ -42,7 +42,7 @@ function get_list_of_committers {
 
 # returns the list of commits for the current git repo in the chonological order 
 function get_list_of_commits {
-	git log --all --reverse --pretty=format:"%H"
+	git log --author-date-order --all --reverse --pretty=format:"%H"
 }
 
 # expects username as a first parameter 
@@ -90,7 +90,7 @@ then
 	usage="usage: git-stats.sh  [--help] | REPOSITORY [GRAPH_DESTINATION]\n
 		--help to see this message.\n
 		REPOSITORY \t\tis a name of the git repository that will be analysed.\n
-		GRAPH_DESTINATION \tif specified is a path where stats graph will be saved to. Otherwise file "graph.pdf" will be created in the current directory.\n"
+		GRAPH_DESTINATION \tif specified is a name of the file that will be created in a current directory where stats graph will be saved to. If not specified, equals to \"graph.pdf\".\n"
 	echo -ne $usage	
 	cleanup
 	exit
