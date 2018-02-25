@@ -113,6 +113,7 @@ then
 	exit
 fi
 
+cd *
 echo "Generating graph. It may take some time..."
 
 counter=0
@@ -133,6 +134,11 @@ gnuplot -e " \
 		exit" > "$graph_file"
 
 cp "$graph_file" ".."
+cd ..
+cp "$graph_file" ".."
+rm "$graph_file"
+cd *
+
 echo -e "DONE. You can find the graph in \e[4m$graph_file\e[0m file."
 echo "Generating authors statistics table..."
 
