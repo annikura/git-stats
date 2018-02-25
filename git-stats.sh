@@ -131,13 +131,8 @@ gnuplot -e " \
 		set xlabel \"Commits\"; \
 		set ylabel \"Lines of code\"; \
 		plot  \"$tmpfile\" title 'Lines in repository' with lines; \
-		exit" > "$graph_file"
+		exit" > "../../$graph_file"
 
-cp "$graph_file" ".."
-cd ..
-cp "$graph_file" ".."
-rm "$graph_file"
-cd *
 
 echo -e "DONE. You can find the graph in \e[4m$graph_file\e[0m file."
 echo "Generating authors statistics table..."
