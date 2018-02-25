@@ -7,9 +7,6 @@ In order to execute successfully, it requires git and gnuplot to be installed:
 	sudo apt-get install git
 	sudo apt-get install gnuplot
 
-To make this script executable you will need to run the next command:
-	chmod +x <path to the script file>
-
 ## Usage
 	usage: git-stats.sh  [--help] | REPOSITORY [GRAPH_DESTINATION]
 		--help to see this message.
