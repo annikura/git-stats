@@ -10,8 +10,8 @@ In order to execute successfully, it requires git and gnuplot to be installed:
 ## Usage
 	usage: git-stats.sh  [--help] | REPOSITORY [GRAPH_DESTINATION]
 		--help to see this message.
-		REPOSITORY \t\tis a name of the git repository that will be analysed.
-		GRAPH_DESTINATION \tif specified is a path where stats graph will be saved to. Otherwise file "graph.pdf" will be created in the current directory.
+		REPOSITORY is a name of the git repository that will be analysed.
+		GRAPH_DESTINATION if specified is a path where stats graph will be saved to. Otherwise file "graph.pdf" will be created in the current directory.
 
 ## Example
 	./git-stats.sh https://github.com/annikura/git-stats.git my-graph
