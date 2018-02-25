@@ -13,7 +13,7 @@ function get_average_commit_time {
 			first=$1; \
 		inc+=1} \
 		END \
-		{if (inc < 1) \
+		{if (inc <= 1) \
 			ans=0; \
 		else \
 			ans = (first-last)/(inc - 1)/86400; \ 
@@ -54,7 +54,7 @@ function get_number_of_commits {
 
 # retrieves the number of lines in the current state of the repository from diff --shortstat call
 function get_number_of_lines_in_repository {
-	git diff --shortstat `git hash-object -t tree /dev/null` | 
+	git diff --shortstat "$(git hash-object -t tree /dev/null)" | 
 	# `git hash-object -t tree /dev/null` -- hash, corresponding to an empty tree 
 	# result of this command has format "X files changed, Y insertions(+)"
 	grep -Po "[0-9]+[^0-9]+\K[0-9]*" # extracting second number in the line
@@ -97,6 +97,13 @@ then
 fi
 
 graph_file="$2"
+
+if [[ "$2" = *"/"* ]]
+then
+	echo "'$2' is a complex name. Please, choose name without '/' symbol. Aborting...	"
+	cleanup
+	exit
+fi
 
 if [ "$2" == "" ]
 then
@@ -148,9 +155,9 @@ printf 	"%25s %25s %25s %25s %25s\n\n" \
 for committer in $(get_list_of_committers)
 do
 	printf "%25s %25s %25s %25s\n" "$committer" \
-	"$(get_number_of_commits $committer)" \
-	"$(get_average_commit_time $committer)" \
-	"$(get_inserted_and_deleted_averages $committer)";
+	"$(get_number_of_commits "$committer")" \
+	"$(get_average_commit_time "$committer")" \
+	"$(get_inserted_and_deleted_averages "$committer")";
 done
 
 cleanup
